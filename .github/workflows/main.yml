@@ -29,4 +29,4 @@ jobs:
           # The root LaTeX file to be compiled
           root_file: resume.tex
           # Extra arguments to be passed to the latex compiler
-          args: -xelatex -latex-option=-interaction=nonstopmode
+          args: -xelatex -latexoption=-interaction=nonstopmode
