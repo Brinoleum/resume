@@ -21,7 +21,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - name: LaTeX compilation
+      - name: LaTeX Compilation
         # You may pin to the exact commit or the version.
         # uses: dante-ev/latex-action@259e5ff953ad4d4616fbd09cc87a526ee5c4499a
         uses: dante-ev/latex-action@v0.2.0
@@ -30,6 +30,12 @@ jobs:
           root_file: resume.tex
           # Extra arguments to be passed to the latex compiler
           args: -xelatex -latexoption=-interaction=nonstopmode
+      - name: Get Current Time
+        uses: 1466587594/get-current-time@v2.0.0
+        id: get_current_time
+        with:
+          format: YYYY-MM-DD:HH:mm
+          utcOffset: "-8:00"
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -37,7 +43,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          release_name: Release ${{ github.ref }}, published ${{ steps.get_current_time.outputs.formattedTime }}
           draft: false
           prerelease: false
       - name: Upload Release Asset
