@@ -34,7 +34,7 @@ jobs:
         uses: 1466587594/get-current-time@v2.0.0
         id: get_current_time
         with:
-          format: YYYY-MM-DD:HH:mm
+          format: YYYY.MM.DD.HH.mm
           utcOffset: "-8:00"
       - name: Create Release
         id: create_release
@@ -42,8 +42,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }} @ ${{ steps.get_current_time.outputs.formattedTime }}
-          release_name: Release ${{ github.ref }}, published ${{ steps.get_current_time.outputs.formattedTime }}
+          tag_name: ${{ github.ref }}/${{ steps.get_current_time.outputs.formattedTime }}
+          release_name: ${{ steps.get_current_time.outputs.formattedTime }}
           draft: false
           prerelease: false
       - name: Upload Release Asset
