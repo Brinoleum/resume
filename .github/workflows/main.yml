@@ -42,7 +42,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
+          tag_name: ${{ github.ref }} @ ${{ steps.get_current_time.outputs.formattedTime }}
           release_name: Release ${{ github.ref }}, published ${{ steps.get_current_time.outputs.formattedTime }}
           draft: false
           prerelease: false
