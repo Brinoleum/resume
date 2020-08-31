@@ -42,8 +42,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}/${{ steps.get_current_time.outputs.formattedTime }}
-          release_name: ${{ steps.get_current_time.outputs.formattedTime }}
+          tag_name: master/v${{ steps.get_current_time.outputs.formattedTime }}
+          release_name: v${{ steps.get_current_time.outputs.formattedTime }}
           draft: false
           prerelease: false
       - name: Upload Release Asset
