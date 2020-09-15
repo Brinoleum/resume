@@ -27,7 +27,7 @@ jobs:
         uses: dante-ev/latex-action@v0.2.0
         with:
           # The root LaTeX file to be compiled
-          root_file: resume.tex
+          root_file: BrianChuResume.tex
           # Extra arguments to be passed to the latex compiler
           args: -xelatex -latexoption=-interaction=nonstopmode
       - name: Get Current Time
@@ -53,6 +53,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: ./resume.pdf
-          asset_name: resume.pdf
+          asset_path: ./BrianChuResume.pdf
+          asset_name: BrianChuResume.pdf
           asset_content_type: application/pdf
