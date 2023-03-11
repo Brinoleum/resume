@@ -29,7 +29,8 @@ jobs:
           # The root LaTeX file to be compiled
           root_file: BrianChuResume.tex
           # Extra arguments to be passed to the latex compiler
-          args: -xelatex -latexoption=-interaction=nonstopmode -f
+	  compiler: xelatex
+          args: -interaction=nonstopmode
       - name: Get Current Time
         uses: 1466587594/get-current-time@v2.0.0
         id: get_current_time
