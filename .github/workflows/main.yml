@@ -43,5 +43,6 @@ jobs:
         with:
           artifacts: BrianChuResume.pdf
           tag: ${{ steps.get_current_time.outputs.get_formatted_time }}
+          commit: master
           artifactContentType: application/pdf
           
