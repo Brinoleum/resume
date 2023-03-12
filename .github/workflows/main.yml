@@ -42,7 +42,7 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           artifacts: BrianChuResume.pdf
-          tag: ${{ steps.get_current_time.outputs.get_formatted_time }}
+          tag: ${{ steps.get_current_time.outputs.formattedTime }}
           commit: master
           artifactContentType: application/pdf
           
