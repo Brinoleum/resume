@@ -20,11 +20,11 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@latest
+      - uses: actions/checkout@v3
       - name: LaTeX Compilation
         # You may pin to the exact commit or the version.
         # uses: dante-ev/latex-action@259e5ff953ad4d4616fbd09cc87a526ee5c4499a
-        uses: dante-ev/latex-action@latest
+        uses: dante-ev/latex-action@2021-A
         with:
           # The root LaTeX file to be compiled
           root_file: BrianChuResume.tex
@@ -33,28 +33,15 @@ jobs:
           args: -interaction=nonstopmode
           extra_system_packages: fonts-font-awesome
       - name: Get Current Time
-        uses: 1466587594/get-current-time@latest
+        uses: 1466587594/get-current-time@v2
         id: get_current_time
         with:
           format: YYYY.MM.DD.HH.mm
           utcOffset: "-8:00"
       - name: Create Release
-        id: create_release
-        uses: actions/create-release@latest
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: ncipollo/release-action@v1
         with:
-          tag_name: master/v${{ steps.get_current_time.outputs.formattedTime }}
-          release_name: v${{ steps.get_current_time.outputs.formattedTime }}
-          draft: false
-          prerelease: false
-      - name: Upload Release Asset
-        id: upload-release-asset 
-        uses: actions/upload-release-asset@latest
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: ./BrianChuResume.pdf
-          asset_name: BrianChuResume.pdf
-          asset_content_type: application/pdf
+          artifacts: BrianChuResume.pdf
+          tag: ${{ steps.get_current_time.outputs.get_formatted_time }}
+          artifactContentType: application/pdf
+          
