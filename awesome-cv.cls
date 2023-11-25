@@ -16,15 +16,13 @@
 % Class license:
 % LPPL v1.3c (http://www.latex-project.org/lppl)
 %
-
-
 %-------------------------------------------------------------------------------
 %                Identification
 %-------------------------------------------------------------------------------
 \ProvidesClass{awesome-cv}[2017/02/05 v1.6.1 Awesome Curriculum Vitae Class]
 \NeedsTeXFormat{LaTeX2e}
 
-
+\usepackage{array}
 %-------------------------------------------------------------------------------
 %                Class options
 %
@@ -522,9 +520,9 @@
 % Define an entry of cv information
 % Usage: \cventry{<position>}{<title>}{<location>}{<date>}{<description>}
 \newcommand*{\cventry}[5]{%
-  \vspace{-2.0mm}
+  \vspace{0mm}
   \setlength\tabcolsep{0pt}
-  \setlength{\extrarowheight}{0pt}
+  \setlength{\extrarowheight}{-2pt}
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
     \ifempty{#1#3#4}
       {\entrytitlestyle{#2} \\
@@ -579,6 +577,8 @@
   \honordatestyle{#4} & \honorpositionstyle{#1}, \honortitlestyle{#2} & \honorlocationstyle{#3} \\
 }
 
+\usepackage{array}
+
 % Define an environment for cvskill
 \newenvironment{cvskills}{%
   \vspace{\acvSectionContentTopSkip}
@@ -586,7 +586,8 @@
   \begin{center}
     \setlength\tabcolsep{1ex}
     \setlength{\extrarowheight}{0pt}
-    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} r L{\textwidth * \real{0.9}}}
+    %\begin{tabular*}{\textwidth}{r l}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} r  L{\textwidth * \real{0.9}}}
 }{%
     \end{tabular*}
   \end{center}
