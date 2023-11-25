@@ -27,7 +27,7 @@ jobs:
         uses: dante-ev/latex-action@latest
         with:
           # The root LaTeX file to be compiled
-          root_file: BrianChuResume.tex
+          root_file: BrianChuCV.tex
           # Extra arguments to be passed to the latex compiler
           compiler: xelatex
           args: -interaction=nonstopmode
@@ -41,7 +41,7 @@ jobs:
       - name: Create Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: BrianChuResume.pdf
+          artifacts: BrianChuCV.pdf
           tag: ${{ steps.get_current_time.outputs.formattedTime }}-${{ github.ref }}
           commit: master
           artifactContentType: application/pdf
