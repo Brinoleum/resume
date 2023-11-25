@@ -6,9 +6,9 @@ name: Publish Resume
 # events but only for the master branch
 on:
   push:
-    branches: [ master ]
+    branches: [ master, curriculum-vitae ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, curriculum-vitae ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -42,7 +42,7 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           artifacts: BrianChuResume.pdf
-          tag: ${{ steps.get_current_time.outputs.formattedTime }}
+          tag: ${{ steps.get_current_time.outputs.formattedTime }}-${{ GITHUB_BASE_REF }}
           commit: master
           artifactContentType: application/pdf
           
