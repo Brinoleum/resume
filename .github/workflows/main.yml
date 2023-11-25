@@ -24,7 +24,7 @@ jobs:
       - name: LaTeX Compilation
         # You may pin to the exact commit or the version.
         # uses: dante-ev/latex-action@259e5ff953ad4d4616fbd09cc87a526ee5c4499a
-        uses: dante-ev/latex-action@2021-A
+        uses: dante-ev/latex-action@latest
         with:
           # The root LaTeX file to be compiled
           root_file: BrianChuResume.tex
